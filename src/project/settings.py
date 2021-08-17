@@ -180,7 +180,7 @@ DATABASES = {
         "NAME": "project",
         "USER": "django",
         "PASSWORD": "django",
-        "HOST": "postgresql",
+        "HOST": "128.199.100.68",
         "PORT": "5432",
     }
 }
