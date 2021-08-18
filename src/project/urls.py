@@ -23,7 +23,16 @@ from all_models import views as all_models_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',all_models_views.viewTemplate, name='index')
+    path('',all_models_views.index, name='index'),
+    path('clinical_annotation/',all_models_views.clinical_annotation, name='clinical_annotation'),
+    path('article/',all_models_views.article, name='article'),
+    path('contact/',all_models_views.contact, name='contact'),
+    path('clinical/',all_models_views.clinical, name='clinical'),
+    path('genes/',all_models_views.genes, name='genes'),
+    path('pathway/',all_models_views.pathway, name='pathway'),
+    path('genetics/',all_models_views.genetics, name='genetics'),
+    path('mrna_cna/',all_models_views.mrna_cna, name='mrna_cna'),
+    path('profile_your_same/',all_models_views.profile_your_same, name='profile_your_same'),
 ]
 
 
