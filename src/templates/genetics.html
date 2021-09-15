@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!-- Plotly.js -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+<!-- Page Heading -->
+<h1 class="h3 mb-4 text-gray-800">Genetics</h1>
+
+{% include "common_graphs.html" %}
+
+<!-- Content Row -->
+<div class="row">
+
+    <!-- Area Chart -->
+    <div class="col-xl-4 col-lg-4">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div
+                class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Mutations</h6>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                <div class="chart-area" id="plotly_graph4">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Area Chart -->
+    <div class="col-xl-4 col-lg-4">
+        <div class="card shadow mb-4">
+            <!-- Card Header - Dropdown -->
+            <div
+                class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Copy Number Alterations</h6>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                <div class="chart-area" id="plotly_graph5">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock content %}
+{% block scripts %}
+<script src="{% static 'js/common_graphs.js' %}"></script>
+<script src="{% static 'js/genetics.js' %}"></script>
+{% endblock scripts %}
