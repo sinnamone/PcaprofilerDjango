@@ -13,8 +13,8 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
-        <li class="nav-item {% if request.resolver_match.url_name == 'clinical' %}active{% endif %}">
-        <a class="nav-link" style="color: red" href="{% url 'index' %}">Institute of Oncology Research<span class="sr-only">(current)</span></a>
+      <li class="nav-item {% if request.resolver_match.url_name == 'index' %}active{% endif %}">
+        <a class="nav-link" style="color: red" href="{% url 'index' %}">Home<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item {% if request.resolver_match.url_name == 'clinical' %}active{% endif %}">
         <a class="nav-link" href="{% url 'clinical' %}">Clinical <span class="sr-only">(current)</span></a>
@@ -33,6 +33,12 @@
       </li>
       <li class="nav-item {% if request.resolver_match.url_name == 'pathway' %}profile_your_same{% endif %}">
         <a class="nav-link" href="{% url 'profile_your_same' %}">Profile Your Sample</a>
+      </li>
+      <li class="nav-item {% if request.resolver_match.url_name == 'index' %}active{% endif %}">
+        <a href="http://ior.iosi.ch/site/" ><img src="/static/img/IOR-Logo.jpg" width="250" height="35" ></a>
+      </li>
+      <li class="nav-item {% if request.resolver_match.url_name == 'index' %}active{% endif %}">
+        <a href="https://www.marionegri.it" ><img src="/static/img/istituto-mario-negri-logo.jpg" width="250" height="35" ></a>
       </li>
     </ul>
   </div>
