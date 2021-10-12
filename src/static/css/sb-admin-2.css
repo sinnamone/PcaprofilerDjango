@@ -4484,7 +4484,7 @@ input[type="button"].btn-block {
 }
 
 .card {
-  position: relative;
+  position: sticky;
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -4523,6 +4523,7 @@ input[type="button"].btn-block {
 }
 
 .card-body {
+  position: sticky;
   flex: 1 1 auto;
   min-height: 1px;
   padding: 1.25rem;
@@ -7757,7 +7758,7 @@ button.bg-dark:focus {
 
 .mb-4,
 .my-4 {
-  margin-bottom: 1.5rem !important;
+  margin-bottom: 2.5rem !important;
 }
 
 .ml-4,

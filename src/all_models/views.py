@@ -19,6 +19,9 @@ def contact(request):
 def clinical(request):
     return render(request, 'clinical.html')
 
+def clinical2(request):
+    return render(request, 'clinical2.html')
+
 def genes(request):
     return render(request, 'genes.html')
 

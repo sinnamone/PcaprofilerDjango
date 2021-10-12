@@ -28,6 +28,7 @@ urlpatterns = [
     path('article/',all_models_views.article, name='article'),
     path('contact/',all_models_views.contact, name='contact'),
     path('clinical/',all_models_views.clinical, name='clinical'),
+    path('clinical2/',all_models_views.clinical2, name='clinical2'),
     path('genes/',all_models_views.genes, name='genes'),
     path('pathway/',all_models_views.pathway, name='pathway'),
     path('genetics/',all_models_views.genetics, name='genetics'),

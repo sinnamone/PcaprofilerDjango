@@ -6,14 +6,11 @@ var pcx = [],
   pseudotime = [],
   patient_id = [],
   text1 = [],
-  text2 = [],
-  EZH2 = []
+  text2 = []
 
-var thead_cols = ["", "PATIENT_ID", "PROGRESSION_STAGE", "EZH2_mRNA"]
 
-var graph1_div = document.getElementById("plotly_graph1")
-var graph2_div = document.getElementById("plotly_graph2")
-var graph3_div = document.getElementById("plotly_graph3")
+var graph5_div = document.getElementById("plotly_graph5")
+var graph4_div = document.getElementById("plotly_graph4")
 var transforms1 = [
   {
     type: "groupby",
@@ -66,11 +63,29 @@ var transforms1 = [
 var config = { responsive: true }
 var layout = {
   autosize: true,
-  hovermode: "closest"
+  hovermode: "closest",
+  xaxis: {
+    title: {
+      text: 'PC1',
+      font: {
+        size: 18,
+        color: '#000000'
+      }
+    },
+  },
+  yaxis: {
+    title: {
+      text: 'PC2',
+      font: {
+        size: 18,
+        color: '#000000'
+      }
+    }
+  }
 }
 function renderPlot(fn) {
   Plotly.d3.csv(
-    "https://raw.githubusercontent.com/sinnamone/PCAprofiler/main/sample_info_def.csv",
+    "https://raw.githubusercontent.com/Maddi-W3MasterioTech/pca/main/DataInfo1.csv",
     function (data) {
       readData(data)
       fn()
@@ -86,15 +101,8 @@ function readData(allRows) {
     group.push(row["GROUP"])
     compx.push(row["Comp1"])
     compy.push(row["Comp2"])
-    pseudotime.push(row["EZH2"])
+    pseudotime.push(row["Pseudotime"])
     patient_id.push(row["LIBRARY_ID"])
-    EZH2.push(row["EZH2"])
-    text1.push(
-      `</br> SAMPLE: ${row["LIBRARY_ID"]} </br> GROUP: ${row["GROUP"]} </br> PC1: ${row["PC1"]}  </br> PC2: ${row["PC2"]}`
-    )
-    text2.push(
-      `</br> SAMPLE: ${row["LIBRARY_ID"]} </br> GROUP: ${row["GROUP"]} </br> PTIME: ${row["Pseudotime"]}`
-    )
   }
   console.log(row)
   console.log(allRows.length)
@@ -115,22 +123,8 @@ function showPlot1() {
     // }
     transforms: transforms1
   }
-  var trace2 = {
-    x: compx,
-    y: compy,
-    // type: "scatter",
-
-    marker: {
-      size: 3,
-      color: "black"
-    },
-    // line: { color: "black", width: 1 },
-    mode: "markers",
-    // color: "black",
-    name: "Trajectory"
-  }
-  var data = [trace1, trace2]
-  Plotly.newPlot(graph1_div, data, layout, config)
+  var data = [trace1]
+  Plotly.newPlot(graph5_div, data, layout, config)
 }
 
 function showPlot2() {
@@ -190,50 +184,8 @@ function showPlot2() {
   Plotly.newPlot(graph2_div, data, layout, config)
 }
 
-function showTable() {
-  let table = document.getElementById("example")
-  let thead = document.createElement("thead")
-  let tbody = document.createElement("tbody")
-  table.appendChild(thead)
-  table.appendChild(tbody)
-  let row_1 = document.createElement("tr")
 
-  for (var i = 0; i < thead_cols.length; i++) {
-    console.log(thead_cols[i])
-    let heading_1 = document.createElement("th")
-    heading_1.innerHTML = thead_cols[i]
-    row_1.appendChild(heading_1)
-  }
-  thead.appendChild(row_1)
-
-  for (var i = 0; i < patient_id.length; i++) {
-    let row_2 = document.createElement("tr")
-
-    // entry
-    let row_2_data_1 = document.createElement("td")
-    row_2_data_1.innerHTML = i + 1
-
-    // patient_id
-    let row_2_data_2 = document.createElement("td")
-    row_2_data_2.innerHTML = patient_id[i]
-
-    // progression_stage
-    let row_2_data_3 = document.createElement("td")
-    row_2_data_3.innerHTML = group[i]
-
-    // progression_stage
-    let row_2_data_4 = document.createElement("td")
-    row_2_data_4.innerHTML = pseudotime[i]
-
-    row_2.appendChild(row_2_data_1)
-    row_2.appendChild(row_2_data_2)
-    row_2.appendChild(row_2_data_3)
-    row_2.appendChild(row_2_data_4)
-    tbody.appendChild(row_2)
-  }
-  $("#example").DataTable()
-}
 
 renderPlot(showPlot1)
 renderPlot(showPlot2)
-renderPlot(showTable)
+
