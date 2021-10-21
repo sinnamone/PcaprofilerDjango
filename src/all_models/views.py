@@ -22,6 +22,21 @@ def clinical(request):
 def clinical2(request):
     return render(request, 'clinical2.html')
 
+def clinical3(request):
+    return render(request, 'clinical3.html')
+
+def clinical4(request):
+    return render(request, 'clinical4.html')
+
+def clinical5(request):
+    return render(request, 'clinical5.html')
+
+def clinical6(request):
+    return render(request, 'clinical6.html')
+
+def clinical7(request):
+    return render(request, 'clinical7.html')
+
 def genes(request):
     return render(request, 'genes.html')
 
